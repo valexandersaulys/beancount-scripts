@@ -1,6 +1,8 @@
 import argparse
 import datetime
 from dateutil.relativedelta import relativedelta
+import random
+import string
 import sys
 
 from beancount.core import number, flags, amount
@@ -54,6 +56,9 @@ def main():
     parser.add_argument("-i", "--installment-space", default="monthly", help="")
     args = parser.parse_args()
     _date = datetime.datetime.today().date()
+    link_str = "deferred-revenue-%s" % "".join(
+        [random.choice(string.hexdigits) for _ in range(9)]
+    )
 
     # Initial Transaction into Deferred Revenue
     txn = Transaction(
@@ -62,8 +67,8 @@ def main():
         flag=flags.FLAG_OKAY,
         payee="payee",  # both payee and narration get mangled
         narration="What does this do?",
-        tags=set(),
-        links=set(),
+        tags={link_str},
+        links={link_str},
         postings=[
             Posting(
                 account="Assets:Cash",
@@ -93,10 +98,10 @@ def main():
             meta=new_metadata("output.beancount", i + 1),
             date=_date,
             flag=flags.FLAG_OKAY,
-            payee="payee",  # both payee and narration get mangled
+            payee="",
             narration="What does this do?",
-            tags=set(),
-            links=set(),
+            tags={link_str},
+            links={link_str},
             postings=[
                 Posting(
                     account=args.deferred_revenue_account,
