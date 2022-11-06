@@ -40,5 +40,31 @@ txn_XYZ,charge,ch_XYZ,30.00,1.17,,,28.83,usd,2022-04-23 21:56,2022-04-30 00:00,I
 ```
 $ python asc606.py --amount 10000 --periods 9
 
+2022-11-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Assets:Cash                    1200 USD
+  Liabilities:Deferred-Revenue  -1200 USD
 
+2022-11-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
+
+2022-12-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
+
+2023-01-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
+
+2023-02-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
+
+2023-03-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
+
+2023-04-06 * "my new payee" "my new description" #deferred-revenue-B5a44C05a ^deferred-revenue-B5a44C05a
+  Liabilities:Deferred-Revenue   200 USD
+  Revenue:Sales                 -200 USD
 ```

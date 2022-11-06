@@ -54,6 +54,8 @@ def main():
         help='Final Revenue Account. Defaults to "Revenue:Sales"',
     )
     parser.add_argument("-i", "--installment-space", default="monthly", help="")
+    parser.add_argument("--payee", default="payee", help="")
+    parser.add_argument("--description", default="description", help="")
     args = parser.parse_args()
     _date = datetime.datetime.today().date()
     link_str = "deferred-revenue-%s" % "".join(
@@ -65,8 +67,8 @@ def main():
         meta=new_metadata("output.beancount", 0),
         date=_date,
         flag=flags.FLAG_OKAY,
-        payee="payee",  # both payee and narration get mangled
-        narration="What does this do?",
+        payee=args.payee,  # both payee and narration get mangled
+        narration=args.description,
         tags={link_str},
         links={link_str},
         postings=[
@@ -98,8 +100,8 @@ def main():
             meta=new_metadata("output.beancount", i + 1),
             date=_date,
             flag=flags.FLAG_OKAY,
-            payee="",
-            narration="What does this do?",
+            payee=args.payee,
+            narration=args.description,
             tags={link_str},
             links={link_str},
             postings=[
